@@ -66,6 +66,8 @@ def findError():
 
 
 def Filter(image, F):
+    '''
+    '''
     m, n = image.shape
     h, k = F.shape
     
@@ -90,9 +92,13 @@ S =  np.array([[-1.,0.,1.],[-2.,0.,2.],[-1.,0.,1.]])
 S = (1./8) * S
 
 def sobelFilter(image):
+    '''
+    '''
     image1 = Filter(image, S)
     image2 = Filter(image, S.T)
     grad = np.sqrt(image1**2 + image2**2  )
     mean = np.mean(grad) * 4
     return grad > mean
+
+sobelFilter('cameraman.png')
 
